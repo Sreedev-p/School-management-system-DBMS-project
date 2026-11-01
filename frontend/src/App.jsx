@@ -1,7 +1,92 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const API = 'http://localhost:5000/api';
+const API = ' https://fraction-lloyd-alcohol-merge.trycloudflare.com/api';
+
+/* --- CLEAN PROFESSIONAL VECTOR ICONS --- */
+const Icons = {
+  Crest: () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+    </svg>
+  ),
+  Dashboard: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <rect x="3" y="3" width="7" height="9" rx="1"/>
+      <rect x="14" y="3" width="7" height="5" rx="1"/>
+      <rect x="14" y="12" width="7" height="9" rx="1"/>
+      <rect x="3" y="16" width="7" height="5" rx="1"/>
+    </svg>
+  ),
+  Marks: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="16" y1="13" x2="8" y2="13"/>
+      <line x1="16" y1="17" x2="8" y2="17"/>
+    </svg>
+  ),
+  Calendar: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+      <line x1="16" y1="2" x2="16" y2="6"/>
+      <line x1="8" y1="2" x2="8" y2="6"/>
+      <line x1="3" y1="10" x2="21" y2="10"/>
+    </svg>
+  ),
+  Upload: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="17 8 12 3 7 8"/>
+      <line x1="12" y1="3" x2="12" y2="15"/>
+    </svg>
+  ),
+  Ledger: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <rect x="2" y="5" width="20" height="14" rx="2"/>
+      <line x1="2" y1="10" x2="22" y2="10"/>
+    </svg>
+  ),
+  Events: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </svg>
+  ),
+  Users: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+  ),
+  Checklist: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M9 11l3 3L22 4"/>
+      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+    </svg>
+  ),
+  FileText: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+    </svg>
+  ),
+  HelpDesk: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+      <line x1="12" y1="17" x2="12.01" y2="17"/>
+    </svg>
+  ),
+  SignOut: () => (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+      <polyline points="16 17 21 12 16 7"/>
+      <line x1="21" y1="12" x2="9" y2="12"/>
+    </svg>
+  )
+};
 
 export default function App() {
   const [session, setSession] = useState(null);
@@ -26,44 +111,44 @@ export default function App() {
 
   return (
     <div className="portal-shell">
-      {/* 1. Master Institutional Banner */}
+      {/* 1. Header Banner */}
       <header className="portal-header">
         <div className="portal-brand">
-          <div className="badge-gold">VIT</div>
-          <div>
-            <div className="portal-title">VTOP Academic Web Portal</div>
-          </div>
+          <div className="brand-crest"><Icons.Crest /></div>
+          <div className="brand-logo-text">SCHOOL MANAGEMENT SYSTEM</div>
         </div>
         <div className="portal-user-profile">
           <div className="user-meta-summary">
             <div className="user-full-name">{session.name}</div>
-            <div className="user-role-badge">{session.role.toUpperCase()} (ID: {session.id})</div>
+            <div className="user-role-badge">{session.role.toUpperCase()} • ID #{session.id}</div>
           </div>
-          <button className="btn-signout" onClick={handleSignOut}>SIGN OUT</button>
+          <button className="btn-signout" onClick={handleSignOut}>
+            <Icons.SignOut /> Sign Out
+          </button>
         </div>
       </header>
 
-      {/* 2. Breadcrumbs & Session Banner */}
+      {/* 2. Subbar & Breadcrumb */}
       <div className="portal-subbar">
         <div className="breadcrumb-trail">
-          <span>VTOP</span> &gt; <span>{session.role.toUpperCase()}</span> &gt;{' '}
+          <span>PORTAL</span> &gt; <span>{session.role.toUpperCase()}</span> &gt;{' '}
           <span className="active">{activeTab.toUpperCase()}</span>
         </div>
         <div className="session-timestamp">
-          SESSION HOST: ORACLE-XE | LOGGED AT: {new Date().toLocaleTimeString()}
+          DATABASE STATUS: ACTIVE | {new Date().toLocaleDateString()}
         </div>
       </div>
 
-      {/* 3. Operational Body Layout */}
+      {/* 3. Main Workspace */}
       <div className="portal-body">
         <aside className="portal-sidebar">
-          <div className="sidebar-heading">Core Navigation</div>
+          <div className="sidebar-heading">Navigation Menu</div>
           
           <button
             className={`nav-item-btn ${activeTab === 'dashboard' ? 'active' : ''}`}
             onClick={() => { setActiveTab('dashboard'); clearAlerts(); }}
           >
-            📊 Overview Dashboard
+            <Icons.Dashboard /> Dashboard Overview
           </button>
 
           {session.role === 'student' && (
@@ -72,31 +157,31 @@ export default function App() {
                 className={`nav-item-btn ${activeTab === 'marks' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('marks'); clearAlerts(); }}
               >
-                📝 Marks & Gradebook
+                <Icons.Marks /> Academic Gradebook
               </button>
               <button
                 className={`nav-item-btn ${activeTab === 'attendance' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('attendance'); clearAlerts(); }}
               >
-                📅 Class Attendance
+                <Icons.Calendar /> Attendance Records
               </button>
               <button
                 className={`nav-item-btn ${activeTab === 'assignments' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('assignments'); clearAlerts(); }}
               >
-                📤 Coursework Upload
+                <Icons.Upload /> Coursework Submissions
               </button>
               <button
                 className={`nav-item-btn ${activeTab === 'fees' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('fees'); clearAlerts(); }}
               >
-                💳 Digital Fee Ledger
+                <Icons.Ledger /> Tuition & Fee Receipts
               </button>
               <button
                 className={`nav-item-btn ${activeTab === 'events' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('events'); clearAlerts(); }}
               >
-                🎪 Campus Events Hub
+                <Icons.Events /> Campus Events
               </button>
             </>
           )}
@@ -107,31 +192,31 @@ export default function App() {
                 className={`nav-item-btn ${activeTab === 'roster' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('roster'); clearAlerts(); }}
               >
-                👥 Class Roster & Grading
+                <Icons.Users /> Student Rosters & Marks
               </button>
               <button
                 className={`nav-item-btn ${activeTab === 'mark-attendance' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('mark-attendance'); clearAlerts(); }}
               >
-                ✍️ Daily Attendance Entry
+                <Icons.Checklist /> Attendance Registry
               </button>
               <button
                 className={`nav-item-btn ${activeTab === 'create-assign' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('create-assign'); clearAlerts(); }}
               >
-                📑 Assignment Dispatcher
+                <Icons.FileText /> Assignment Manager
               </button>
               <button
                 className={`nav-item-btn ${activeTab === 'payroll' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('payroll'); clearAlerts(); }}
               >
-                💰 Salary Disbursements
+                <Icons.Ledger /> Salary Statements
               </button>
               <button
                 className={`nav-item-btn ${activeTab === 'helpdesk' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('helpdesk'); clearAlerts(); }}
               >
-                🛡️ Guardian Grievance Desk
+                <Icons.HelpDesk /> Support Grievances
               </button>
             </>
           )}
@@ -142,19 +227,18 @@ export default function App() {
                 className={`nav-item-btn ${activeTab === 'wards' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('wards'); clearAlerts(); }}
               >
-                👨‍🎓 Ward Academic Analytics
+                <Icons.Users /> Ward Performance
               </button>
               <button
                 className={`nav-item-btn ${activeTab === 'grievance' ? 'active' : ''}`}
                 onClick={() => { setActiveTab('grievance'); clearAlerts(); }}
               >
-                ✉️ Lodge Grievance Ticket
+                <Icons.HelpDesk /> Support Grievances
               </button>
             </>
           )}
         </aside>
 
-        {/* Dynamic Context Canvas */}
         <main className="portal-content">
           {errorBanner && <div className="alert-box alert-danger">{errorBanner}</div>}
           {successBanner && <div className="alert-box alert-success">{successBanner}</div>}
@@ -213,7 +297,7 @@ function LoginView({ setSession }) {
         body: JSON.stringify({ role, id: parseInt(id), password })
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Authentication rejected.');
+      if (!res.ok) throw new Error(data.error || 'Authentication failed.');
       setSession(data);
     } catch (err) {
       setErrMsg(err.message);
@@ -226,34 +310,34 @@ function LoginView({ setSession }) {
     <div className="login-screen">
       <div className="login-top-bar">
         <div className="brand-badge">
-          <div className="vtop-shield">VIT</div>
+          <div className="brand-crest"><Icons.Crest /></div>
           <div>
-            <div className="sys-title">VTOP School Management System</div>
+            <div className="sys-title">SCHOOL MANAGEMENT SYSTEM</div>
             <div className="sys-sub">Enterprise Relational Education Infrastructure</div>
           </div>
         </div>
       </div>
 
       <div className="login-center-wrapper">
-        <div className="vtop-login-card">
+        <div className="sms-login-card">
           <div className="login-card-header">
-            <h2>Secure Sign In</h2>
+            <h2>System Authentication</h2>
             <p>Access your authorized academic dashboard</p>
           </div>
           <div className="login-card-body">
             {errMsg && <div className="alert-box alert-danger">{errMsg}</div>}
             <form onSubmit={performLogin}>
               <div className="input-group">
-                <label>Institutional Role</label>
+                <label>User Role</label>
                 <select value={role} onChange={(e) => setRole(e.target.value)}>
-                  <option value="student">Student Portal</option>
-                  <option value="faculty">Faculty Portal</option>
-                  <option value="guardian">Guardian / Parent Portal</option>
+                  <option value="student">Student</option>
+                  <option value="faculty">Faculty</option>
+                  <option value="guardian">Guardian / Parent</option>
                 </select>
               </div>
 
               <div className="input-group">
-                <label>Registration / Account ID</label>
+                <label>Account ID</label>
                 <input
                   type="number"
                   required
@@ -264,23 +348,23 @@ function LoginView({ setSession }) {
               </div>
 
               <div className="input-group">
-                <label>Access Password</label>
+                <label>Password</label>
                 <input
                   type="password"
                   required
-                  placeholder="Your First Name"
+                  placeholder="First name (e.g. Arjun)"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
 
-              <button type="submit" className="btn-vtop-login" disabled={loading}>
-                {loading ? 'AUTHENTICATING...' : 'LOG IN TO VTOP'}
+              <button type="submit" className="btn-sms-login" disabled={loading}>
+                {loading ? 'Authenticating...' : 'Sign In'}
               </button>
             </form>
 
             <div className="login-credentials-helper">
-              <strong>Quick Test Credentials:</strong><br />
+              <strong>Pre-loaded Accounts:</strong><br />
               • Student: ID <code>1</code> | Pwd: <code>Arjun</code><br />
               • Faculty: ID <code>1</code> | Pwd: <code>Anita</code><br />
               • Guardian: ID <code>1</code> | Pwd: <code>Ramesh</code>
@@ -293,7 +377,7 @@ function LoginView({ setSession }) {
 }
 
 // -------------------------------------------------------------
-// STUDENT SUB-PORTAL VIEW
+// STUDENT VIEW
 // -------------------------------------------------------------
 function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
   const [payload, setPayload] = useState(null);
@@ -301,7 +385,6 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
   const [targetAssgn, setTargetAssgn] = useState('');
   const [uploading, setUploading] = useState(false);
 
-  // New Event Form State
   const [evName, setEvName] = useState('');
   const [evDate, setEvDate] = useState('');
   const [evVenue, setEvVenue] = useState('');
@@ -312,7 +395,7 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
       const data = await res.json();
       setPayload(data);
     } catch (e) {
-      setError("Failed to synchronize student records with Oracle backend.");
+      setError("Failed to fetch student data from server.");
     }
   };
 
@@ -320,11 +403,9 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
     fetchStudentData();
   }, [sid]);
 
-  if (!payload) return <div>Synchronizing Relational Data...</div>;
+  if (!payload) return <div>Loading records...</div>;
 
   const { profile, classes, attendance, marks, assignments, fees, events } = payload;
-
-  // Analytical Metrics Calculation
   const totalClassesAttended = attendance.filter(a => a.did_attend === 'Y').length;
   const attendanceRate = attendance.length > 0 ? ((totalClassesAttended / attendance.length) * 100).toFixed(1) : 0;
   const totalFeesPaid = fees.reduce((sum, f) => sum + parseFloat(f.amount || 0), 0);
@@ -332,7 +413,7 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
   const handleUploadSubmit = async (e) => {
     e.preventDefault();
     if (!selectedFile || !targetAssgn) {
-      setError("Please select both a valid target assignment and a physical file.");
+      setError("Please select both an assignment and a file.");
       return;
     }
     setUploading(true);
@@ -349,7 +430,7 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      setSuccess("Physical document successfully verified and logged into submission schema.");
+      setSuccess("Assignment file successfully uploaded.");
       fetchStudentData();
       e.target.reset();
       setSelectedFile(null);
@@ -369,7 +450,7 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      setSuccess(`Event registration state updated to: ${data.status}`);
+      setSuccess(`Event registration updated: ${data.status}`);
       fetchStudentData();
     } catch (err) {
       setError(err.message);
@@ -386,7 +467,7 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      setSuccess("New campus event successfully posted.");
+      setSuccess("New event added successfully.");
       setEvName(''); setEvDate(''); setEvVenue('');
       fetchStudentData();
     } catch (err) {
@@ -396,53 +477,51 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
 
   return (
     <div>
-      {/* KPI Cards */}
       <div className="metrics-row">
-        <div className="metric-card gold-border">
-          <div className="metric-label">Enrolled Department</div>
+        <div className="metric-card">
+          <div className="metric-label">Department</div>
           <div className="metric-value">{profile.dept_name || 'General'}</div>
-          <div className="metric-sub">Nat. ID: {profile.national_id}</div>
+          <div className="metric-sub">ID: {profile.national_id}</div>
         </div>
-        <div className="metric-card green-border">
-          <div className="metric-label">Aggregated Attendance</div>
+        <div className="metric-card">
+          <div className="metric-label">Attendance Rate</div>
           <div className="metric-value">{attendanceRate}%</div>
           <div className="metric-sub">{totalClassesAttended} of {attendance.length} sessions attended</div>
         </div>
         <div className="metric-card">
-          <div className="metric-label">Active Enrolments</div>
+          <div className="metric-label">Enrolled Classes</div>
           <div className="metric-value">{classes.length}</div>
-          <div className="metric-sub">Academic Term 2025-2026</div>
+          <div className="metric-sub">Current Term</div>
         </div>
-        <div className="metric-card gold-border">
-          <div className="metric-label">Fee Disbursements</div>
+        <div className="metric-card">
+          <div className="metric-label">Fees Paid</div>
           <div className="metric-value">₹{totalFeesPaid.toLocaleString()}</div>
           <div className="metric-sub">{fees.length} Total Receipts</div>
         </div>
       </div>
 
-      {/* Dynamic Tab Switcher */}
       {activeTab === 'dashboard' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Active Enrolled Class Timetable & Schedule</h3>
+            <h3>Registered Classes & Schedules</h3>
           </div>
           <div className="content-card-body">
             <table className="vtop-data-table">
               <thead>
                 <tr>
-                  <th>Class ID</th>
-                  <th>Assigned Room</th>
-                  <th>Academic Session</th>
-                  <th>Designated Class Faculty</th>
+                  <th>Class Reference</th>
+                  <th>Classroom</th>
+                  <th>Academic Term</th>
+                  <th>Faculty Instructor</th>
                 </tr>
               </thead>
               <tbody>
                 {classes.map(c => (
                   <tr key={c.class_id}>
-                    <td><strong>CLS-{c.class_id}</strong></td>
+                    <td><strong>Class #{c.class_id}</strong></td>
                     <td>{c.room_id}</td>
                     <td>{c.academic_year}</td>
-                    <td>{c.teacher_name || 'Faculty Not Appointed'}</td>
+                    <td>{c.teacher_name || 'Unassigned'}</td>
                   </tr>
                 ))}
               </tbody>
@@ -454,18 +533,18 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
       {activeTab === 'marks' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Continuous Assessment & Exam Gradebook</h3>
+            <h3>Continuous Assessments & Exam Grades</h3>
           </div>
           <div className="content-card-body">
             <table className="vtop-data-table">
               <thead>
                 <tr>
-                  <th>Course Code / Name</th>
+                  <th>Course Title</th>
                   <th>Credits</th>
-                  <th>Assessment Type</th>
-                  <th>Awarded Marks</th>
-                  <th>Maximum</th>
-                  <th>Score %</th>
+                  <th>Assessment</th>
+                  <th>Score</th>
+                  <th>Max Score</th>
+                  <th>Percentage</th>
                 </tr>
               </thead>
               <tbody>
@@ -476,7 +555,7 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
                       <td>{m.subject_name}</td>
                       <td>{m.credits}</td>
                       <td><strong>{m.assessment_type}</strong></td>
-                      <td style={{ color: pct >= 50 ? 'green' : 'red', fontWeight: 'bold' }}>{m.mark}</td>
+                      <td style={{ fontWeight: 'bold' }}>{m.mark}</td>
                       <td>{m.max_mark}</td>
                       <td>{pct}%</td>
                     </tr>
@@ -491,27 +570,27 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
       {activeTab === 'attendance' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Daily Session Attendance Log</h3>
+            <h3>Daily Session Attendance History</h3>
           </div>
           <div className="content-card-body">
             <table className="vtop-data-table">
               <thead>
                 <tr>
                   <th>Date</th>
-                  <th>Class Ref</th>
-                  <th>Venue</th>
-                  <th>Presence Status</th>
+                  <th>Class Reference</th>
+                  <th>Room</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
                 {attendance.map((a, i) => (
                   <tr key={i}>
                     <td>{a.attend_date}</td>
-                    <td>Class ID: {a.class_id}</td>
+                    <td>Class #{a.class_id}</td>
                     <td>{a.room_id}</td>
                     <td>
                       <span className={`badge-pill ${a.did_attend === 'Y' ? 'badge-attend-y' : 'badge-attend-n'}`}>
-                        {a.did_attend === 'Y' ? 'PRESENT' : 'ABSENT'}
+                        {a.did_attend === 'Y' ? 'Present' : 'Absent'}
                       </span>
                     </td>
                   </tr>
@@ -525,15 +604,15 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
       {activeTab === 'assignments' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Digital Coursework & Physical File Submissions</h3>
+            <h3>Course Assignments & Submissions</h3>
           </div>
           <div className="content-card-body">
-            <form onSubmit={handleUploadSubmit} style={{ marginBottom: '2rem', background: '#f8fafc', padding: '1.25rem', borderRadius: '6px' }}>
+            <form onSubmit={handleUploadSubmit} style={{ marginBottom: '2rem', background: '#f8fafc', padding: '1.25rem', borderRadius: '6px', border: '1px solid var(--sms-border)' }}>
               <div className="form-grid-2">
                 <div className="input-group">
-                  <label>Select Target Assignment</label>
+                  <label>Target Assignment</label>
                   <select value={targetAssgn} onChange={(e) => setTargetAssgn(e.target.value)} required>
-                    <option value="">-- Choose Assignment --</option>
+                    <option value="">-- Select Assignment --</option>
                     {assignments.map(a => (
                       <option key={a.assignment_id} value={a.assignment_id}>
                         {a.title} ({a.subject_name}) - Due: {a.due_date}
@@ -542,12 +621,12 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
                   </select>
                 </div>
                 <div className="input-group">
-                  <label>Select Physical Document (PDF / DOCX)</label>
+                  <label>Document File (PDF / DOCX)</label>
                   <input type="file" required onChange={(e) => setSelectedFile(e.target.files[0])} />
                 </div>
               </div>
               <button type="submit" className="btn-action-primary" disabled={uploading}>
-                {uploading ? 'UPLOADING TO LOCAL DISK...' : 'SUBMIT ASSIGNMENT DOCUMENT'}
+                {uploading ? 'Uploading...' : 'Submit Document'}
               </button>
             </form>
 
@@ -558,7 +637,7 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
                   <th>Subject</th>
                   <th>Due Date</th>
                   <th>Submission Date</th>
-                  <th>Archived File</th>
+                  <th>Uploaded Document</th>
                 </tr>
               </thead>
               <tbody>
@@ -567,13 +646,13 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
                     <td><strong>{a.title}</strong></td>
                     <td>{a.subject_name}</td>
                     <td>{a.due_date}</td>
-                    <td>{a.submit_date || <span style={{ color: '#ef4444' }}>Pending</span>}</td>
+                    <td>{a.submit_date || <span style={{ color: '#dc2626' }}>Pending</span>}</td>
                     <td>
                       {a.file_url ? (
                         <a href={`http://localhost:5000${a.file_url}`} target="_blank" rel="noreferrer" style={{ color: '#0284c7', fontWeight: 'bold' }}>
-                          View Archived PDF
+                          View File
                         </a>
-                      ) : 'No file on record'}
+                      ) : 'No file uploaded'}
                     </td>
                   </tr>
                 ))}
@@ -586,25 +665,25 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
       {activeTab === 'fees' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Tuition & Institutional Fee Payments</h3>
+            <h3>Tuition & Fee Ledger</h3>
           </div>
           <div className="content-card-body">
             <table className="vtop-data-table">
               <thead>
                 <tr>
-                  <th>Receipt Ref ID</th>
+                  <th>Receipt Number</th>
                   <th>Payment Date</th>
-                  <th>Disbursed Amount</th>
-                  <th>Transaction Status</th>
+                  <th>Amount</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
                 {fees.map(f => (
                   <tr key={f.fee_id}>
-                    <td>REC-{f.fee_id}</td>
+                    <td>REC-00{f.fee_id}</td>
                     <td>{f.pay_date}</td>
                     <td><strong>₹{parseFloat(f.amount).toLocaleString()}</strong></td>
-                    <td><span className="badge-pill badge-resolved">PROCESSED & SETTLED</span></td>
+                    <td><span className="badge-pill badge-resolved">Settled</span></td>
                   </tr>
                 ))}
               </tbody>
@@ -616,25 +695,25 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
       {activeTab === 'events' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Campus Extracurricular & Tech Symposiums</h3>
+            <h3>Campus Events & Registrations</h3>
           </div>
           <div className="content-card-body">
-            <div style={{ marginBottom: '2rem', background: '#f8fafc', padding: '1.25rem', borderRadius: '6px' }}>
-              <h4 style={{ marginBottom: '1rem', color: '#002147' }}>Organize & Register New Campus Event</h4>
+            <div style={{ marginBottom: '2rem', background: '#f8fafc', padding: '1.25rem', borderRadius: '6px', border: '1px solid var(--sms-border)' }}>
+              <h4 style={{ marginBottom: '1rem', color: '#0f172a' }}>Create New Event</h4>
               <form onSubmit={handlePublishEvent} className="form-grid-2">
                 <div className="input-group">
                   <label>Event Name</label>
-                  <input type="text" required placeholder="e.g. GraVITas Hackathon" value={evName} onChange={e => setEvName(e.target.value)} />
+                  <input type="text" required placeholder="Event Title" value={evName} onChange={e => setEvName(e.target.value)} />
                 </div>
                 <div className="input-group">
-                  <label>Scheduled Date</label>
+                  <label>Date</label>
                   <input type="date" required value={evDate} onChange={e => setEvDate(e.target.value)} />
                 </div>
                 <div className="input-group" style={{ gridColumn: '1 / -1' }}>
-                  <label>Campus Venue</label>
-                  <input type="text" required placeholder="e.g. Anna Auditorium" value={evVenue} onChange={e => setEvVenue(e.target.value)} />
+                  <label>Venue</label>
+                  <input type="text" required placeholder="Campus Location" value={evVenue} onChange={e => setEvVenue(e.target.value)} />
                 </div>
-                <button type="submit" className="btn-action-primary">PUBLISH OFFICIAL EVENT</button>
+                <button type="submit" className="btn-action-primary">Publish Event</button>
               </form>
             </div>
 
@@ -658,7 +737,7 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
                         className={`btn-action-sm ${ev.reg_status === 'REGISTERED' ? 'btn-sm-green' : 'btn-sm-blue'}`}
                         onClick={() => handleToggleEvent(ev.event_id)}
                       >
-                        {ev.reg_status === 'REGISTERED' ? '✓ ENROLLED (LEAVE)' : '+ REGISTER ATTENDANCE'}
+                        {ev.reg_status === 'REGISTERED' ? 'Enrolled (Leave)' : 'Register Attendance'}
                       </button>
                     </td>
                   </tr>
@@ -673,31 +752,27 @@ function StudentPortalView({ sid, activeTab, setError, setSuccess }) {
 }
 
 // -------------------------------------------------------------
-// FACULTY SUB-PORTAL VIEW
+// FACULTY VIEW
 // -------------------------------------------------------------
 function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
   const [payload, setPayload] = useState(null);
   const [selectedClass, setSelectedClass] = useState(null);
   const [classDetails, setClassDetails] = useState(null);
 
-  // Attendance Form
   const [attDate, setAttDate] = useState(new Date().toISOString().split('T')[0]);
   const [attMap, setAttMap] = useState({});
 
-  // Grade Entry Form
   const [gradeSid, setGradeSid] = useState('');
   const [gradeSubId, setGradeSubId] = useState('');
   const [gradeType, setGradeType] = useState('MIDTERM');
   const [gradeMark, setGradeMark] = useState('');
   const [gradeMax, setGradeMax] = useState('50');
 
-  // Assignment Form
   const [asTitle, setAsTitle] = useState('');
   const [asDue, setAsDue] = useState('');
   const [asSubId, setAsSubId] = useState('');
   const [asClassId, setAsClassId] = useState('');
 
-  // Submissions Modal
   const [inspectingAssgn, setInspectingAssgn] = useState(null);
   const [submissionsList, setSubmissionsList] = useState([]);
 
@@ -710,7 +785,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
         setSelectedClass(data.classes[0].class_id);
       }
     } catch (e) {
-      setError("Failed to synchronize faculty portfolio from Oracle backend.");
+      setError("Failed to fetch faculty details from server.");
     }
   };
 
@@ -719,12 +794,11 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
       const res = await fetch(`${API}/faculty/class/${cid}/details`);
       const data = await res.json();
       setClassDetails(data);
-      // Initialize attendance map
       const initMap = {};
       data.students.forEach(s => { initMap[s.student_id] = 'Y'; });
       setAttMap(initMap);
     } catch (e) {
-      setError("Failed to fetch detailed roster.");
+      setError("Failed to fetch class roster.");
     }
   };
 
@@ -738,7 +812,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
     }
   }, [selectedClass]);
 
-  if (!payload) return <div>Synchronizing Relational Data...</div>;
+  if (!payload) return <div>Loading records...</div>;
 
   const { profile, classes, salaries, complaints, subjects } = payload;
 
@@ -757,7 +831,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      setSuccess("Attendance successfully persisted into relational schema.");
+      setSuccess("Attendance saved successfully.");
       fetchClassDetails(selectedClass);
     } catch (err) {
       setError(err.message);
@@ -780,7 +854,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      setSuccess("Evaluation grade entry successfully verified and recorded.");
+      setSuccess("Grade recorded successfully.");
       setGradeMark('');
     } catch (err) {
       setError(err.message);
@@ -802,7 +876,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      setSuccess("Course assignment registered for enrolled students.");
+      setSuccess("Assignment created successfully.");
       setAsTitle(''); setAsDue('');
       if (selectedClass) fetchClassDetails(selectedClass);
     } catch (err) {
@@ -819,7 +893,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      setSuccess("Grievance ticket state changed.");
+      setSuccess("Grievance status updated.");
       fetchFacultyData();
     } catch (err) {
       setError(err.message);
@@ -841,47 +915,47 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
     <div>
       <div className="metrics-row">
         <div className="metric-card">
-          <div className="metric-label">Assigned Department</div>
+          <div className="metric-label">Department</div>
           <div className="metric-value">{profile.dept_name}</div>
           <div className="metric-sub">{profile.email}</div>
         </div>
-        <div className="metric-card gold-border">
-          <div className="metric-label">Assigned Sections</div>
+        <div className="metric-card">
+          <div className="metric-label">Assigned Classes</div>
           <div className="metric-value">{classes.length}</div>
-          <div className="metric-sub">Classroom Teacher Appointments</div>
+          <div className="metric-sub">Active Sections</div>
         </div>
-        <div className="metric-card green-border">
-          <div className="metric-label">Latest Salary Disbursed</div>
+        <div className="metric-card">
+          <div className="metric-label">Latest Salary</div>
           <div className="metric-value">
             {salaries.length > 0 ? `₹${parseFloat(salaries[0].amount).toLocaleString()}` : 'N/A'}
           </div>
-          <div className="metric-sub">{salaries.length > 0 ? salaries[0].payment_date : 'No Records'}</div>
+          <div className="metric-sub">{salaries.length > 0 ? salaries[0].payment_date : 'No records'}</div>
         </div>
-        <div className="metric-card red-border">
-          <div className="metric-label">Open Grievance Tickets</div>
+        <div className="metric-card">
+          <div className="metric-label">Open Grievances</div>
           <div className="metric-value">{complaints.filter(c => c.status === 'OPEN').length}</div>
-          <div className="metric-sub">Parent / Guardian Lodged</div>
+          <div className="metric-sub">Parent Inquiries</div>
         </div>
       </div>
 
       {activeTab === 'dashboard' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Faculty Designated Course Sections</h3>
+            <h3>Assigned Class Sections</h3>
           </div>
           <div className="content-card-body">
             <table className="vtop-data-table">
               <thead>
                 <tr>
-                  <th>Class Ref</th>
-                  <th>Classroom Room ID</th>
-                  <th>Session Period</th>
+                  <th>Class Reference</th>
+                  <th>Room</th>
+                  <th>Academic Term</th>
                 </tr>
               </thead>
               <tbody>
                 {classes.map(c => (
                   <tr key={c.class_id}>
-                    <td><strong>CLASS ID #{c.class_id}</strong></td>
+                    <td><strong>Class #{c.class_id}</strong></td>
                     <td>{c.room_id}</td>
                     <td>{c.academic_year}</td>
                   </tr>
@@ -896,11 +970,11 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
         <div>
           <div className="content-card">
             <div className="content-card-header">
-              <h3>Select Active Teaching Section</h3>
+              <h3>Class Student Roster</h3>
               <select
                 value={selectedClass || ''}
                 onChange={e => setSelectedClass(parseInt(e.target.value))}
-                style={{ padding: '6px 12px', borderRadius: '4px', border: '1px solid #ccc' }}
+                style={{ padding: '8px 12px', borderRadius: '4px', border: '1px solid var(--sms-border-strong)' }}
               >
                 {classes.map(c => (
                   <option key={c.class_id} value={c.class_id}>
@@ -912,15 +986,14 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
             <div className="content-card-body">
               {classDetails && (
                 <>
-                  <h4 style={{ marginBottom: '1rem', color: '#002147' }}>Enrolled Students & Performance Roster</h4>
                   <table className="vtop-data-table" style={{ marginBottom: '2rem' }}>
                     <thead>
                       <tr>
                         <th>ID</th>
                         <th>Student Name</th>
-                        <th>Institutional Email</th>
-                        <th>Attendance %</th>
-                        <th>Quick Grade Action</th>
+                        <th>Email</th>
+                        <th>Attendance Rate</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -932,7 +1005,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
                             <td><strong>{s.name}</strong></td>
                             <td>{s.email}</td>
                             <td>
-                              <span style={{ fontWeight: 'bold', color: pct >= 75 ? '#15803d' : '#b91c1c' }}>
+                              <span style={{ fontWeight: 'bold' }}>
                                 {pct}% ({s.present_cnt}/{s.total_cnt})
                               </span>
                             </td>
@@ -950,21 +1023,20 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
                     </tbody>
                   </table>
 
-                  {/* Grade Awarding Form */}
-                  <div style={{ background: '#f8fafc', padding: '1.25rem', borderRadius: '6px' }}>
-                    <h4 style={{ marginBottom: '1rem', color: '#002147' }}>Award Assessment Evaluation Marks</h4>
+                  <div style={{ background: '#f8fafc', padding: '1.25rem', borderRadius: '6px', border: '1px solid var(--sms-border)' }}>
+                    <h4 style={{ marginBottom: '1rem', color: '#0f172a' }}>Enter Evaluation Grade</h4>
                     <form onSubmit={submitGrade} className="form-grid-2">
                       <div className="input-group">
-                        <label>Selected Student ID</label>
+                        <label>Student ID</label>
                         <input type="number" required value={gradeSid} onChange={e => setGradeSid(e.target.value)} />
                       </div>
                       <div className="input-group">
-                        <label>Target Subject</label>
+                        <label>Subject</label>
                         <select required value={gradeSubId} onChange={e => setGradeSubId(e.target.value)}>
-                          <option value="">-- Select Subject --</option>
+                          <option value="">-- Choose Subject --</option>
                           {classDetails.subjects.map(sub => (
                             <option key={sub.subject_id} value={sub.subject_id}>
-                              {sub.name} (ID: {sub.subject_id})
+                              {sub.name}
                             </option>
                           ))}
                         </select>
@@ -972,22 +1044,22 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
                       <div className="input-group">
                         <label>Assessment Type</label>
                         <select value={gradeType} onChange={e => setGradeType(e.target.value)}>
-                          <option value="MIDTERM">Midterm Examination</option>
-                          <option value="FINAL">Final Examination</option>
+                          <option value="MIDTERM">Midterm</option>
+                          <option value="FINAL">Final</option>
                           <option value="QUIZ1">Quiz 1</option>
                           <option value="QUIZ2">Quiz 2</option>
                         </select>
                       </div>
                       <div className="input-group">
-                        <label>Awarded Mark / Score</label>
+                        <label>Mark</label>
                         <input type="number" step="0.5" required value={gradeMark} onChange={e => setGradeMark(e.target.value)} />
                       </div>
                       <div className="input-group">
-                        <label>Max Possible Score</label>
+                        <label>Maximum Mark</label>
                         <input type="number" step="0.5" required value={gradeMax} onChange={e => setGradeMax(e.target.value)} />
                       </div>
                       <button type="submit" className="btn-action-primary" style={{ alignSelf: 'end' }}>
-                        SAVE EVALUATION SCORE
+                        Save Grade
                       </button>
                     </form>
                   </div>
@@ -1001,11 +1073,11 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
       {activeTab === 'mark-attendance' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Batch Daily Attendance Marker</h3>
+            <h3>Attendance Registry Entry</h3>
             <select
               value={selectedClass || ''}
               onChange={e => setSelectedClass(parseInt(e.target.value))}
-              style={{ padding: '6px 12px', borderRadius: '4px', border: '1px solid #ccc' }}
+              style={{ padding: '8px 12px', borderRadius: '4px', border: '1px solid var(--sms-border-strong)' }}
             >
               {classes.map(c => (
                 <option key={c.class_id} value={c.class_id}>Class ID: {c.class_id}</option>
@@ -1016,7 +1088,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
             {classDetails && (
               <form onSubmit={submitAttendance}>
                 <div className="input-group" style={{ maxWidth: '300px', marginBottom: '1.5rem' }}>
-                  <label>Attendance Session Date</label>
+                  <label>Session Date</label>
                   <input type="date" required value={attDate} onChange={e => setAttDate(e.target.value)} />
                 </div>
 
@@ -1037,10 +1109,10 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
                           <select
                             value={attMap[s.student_id] || 'Y'}
                             onChange={e => setAttMap({ ...attMap, [s.student_id]: e.target.value })}
-                            style={{ padding: '4px 8px', borderRadius: '4px' }}
+                            style={{ padding: '6px 12px', borderRadius: '4px' }}
                           >
-                            <option value="Y">PRESENT (Y)</option>
-                            <option value="N">ABSENT (N)</option>
+                            <option value="Y">Present</option>
+                            <option value="N">Absent</option>
                           </select>
                         </td>
                       </tr>
@@ -1048,7 +1120,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
                   </tbody>
                 </table>
                 <button type="submit" className="btn-action-primary">
-                  COMMIT ATTENDANCE ENTRIES TO DATABASE
+                  Save Attendance Records
                 </button>
               </form>
             )}
@@ -1059,24 +1131,24 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
       {activeTab === 'create-assign' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Coursework Assignment Management</h3>
+            <h3>Assignment Manager</h3>
           </div>
           <div className="content-card-body">
-            <div style={{ background: '#f8fafc', padding: '1.25rem', borderRadius: '6px', marginBottom: '2rem' }}>
-              <h4 style={{ marginBottom: '1rem', color: '#002147' }}>Create New Course Assignment</h4>
+            <div style={{ background: '#f8fafc', padding: '1.25rem', borderRadius: '6px', border: '1px solid var(--sms-border)', marginBottom: '2rem' }}>
+              <h4 style={{ marginBottom: '1rem', color: '#0f172a' }}>Dispatch New Assignment</h4>
               <form onSubmit={submitAssignment} className="form-grid-2">
                 <div className="input-group">
-                  <label>Assignment Title</label>
-                  <input type="text" required placeholder="e.g. Lab Exercise 4" value={asTitle} onChange={e => setAsTitle(e.target.value)} />
+                  <label>Title</label>
+                  <input type="text" required placeholder="Assignment Title" value={asTitle} onChange={e => setAsTitle(e.target.value)} />
                 </div>
                 <div className="input-group">
-                  <label>Submission Due Date</label>
+                  <label>Due Date</label>
                   <input type="date" required value={asDue} onChange={e => setAsDue(e.target.value)} />
                 </div>
                 <div className="input-group">
                   <label>Subject</label>
                   <select required value={asSubId} onChange={e => setAsSubId(e.target.value)}>
-                    <option value="">-- Choose Subject --</option>
+                    <option value="">-- Select Subject --</option>
                     {subjects.map(s => (
                       <option key={s.subject_id} value={s.subject_id}>{s.name}</option>
                     ))}
@@ -1085,26 +1157,26 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
                 <div className="input-group">
                   <label>Assign to Class</label>
                   <select required value={asClassId} onChange={e => setAsClassId(e.target.value)}>
-                    <option value="">-- Choose Class --</option>
+                    <option value="">-- Select Class --</option>
                     {classes.map(c => (
-                      <option key={c.class_id} value={c.class_id}>Class ID: {c.class_id}</option>
+                      <option key={c.class_id} value={c.class_id}>Class #{c.class_id}</option>
                     ))}
                   </select>
                 </div>
-                <button type="submit" className="btn-action-primary">DISPATCH ASSIGNMENT</button>
+                <button type="submit" className="btn-action-primary">Create Assignment</button>
               </form>
             </div>
 
             {classDetails && (
               <>
-                <h4 style={{ marginBottom: '1rem', color: '#002147' }}>Existing Class Assignments & Submissions</h4>
+                <h4 style={{ marginBottom: '1rem', color: '#0f172a' }}>Class Assignments</h4>
                 <table className="vtop-data-table">
                   <thead>
                     <tr>
-                      <th>Assignment Title</th>
+                      <th>Title</th>
                       <th>Subject</th>
                       <th>Due Date</th>
-                      <th>Turned In</th>
+                      <th>Submissions</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -1114,7 +1186,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
                         <td><strong>{a.title}</strong></td>
                         <td>{a.subject_name}</td>
                         <td>{a.due_date}</td>
-                        <td>{a.sub_count} Submissions</td>
+                        <td>{a.sub_count} Submitted</td>
                         <td>
                           <button
                             className="btn-action-sm btn-sm-blue"
@@ -1131,14 +1203,14 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
             )}
 
             {inspectingAssgn && (
-              <div style={{ marginTop: '2rem', background: '#fff', border: '1px solid #cbd5e1', padding: '1.25rem', borderRadius: '6px' }}>
-                <h4>Submissions for Assignment Ref #{inspectingAssgn}</h4>
+              <div style={{ marginTop: '2rem', background: '#fff', border: '1px solid var(--sms-border)', padding: '1.25rem', borderRadius: '6px' }}>
+                <h4>Submissions for Assignment #{inspectingAssgn}</h4>
                 <table className="vtop-data-table" style={{ marginTop: '1rem' }}>
                   <thead>
                     <tr>
                       <th>Student ID</th>
                       <th>Student Name</th>
-                      <th>Turn In Date</th>
+                      <th>Turned In Date</th>
                       <th>Uploaded Document</th>
                     </tr>
                   </thead>
@@ -1150,7 +1222,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
                         <td>{sub.submit_date}</td>
                         <td>
                           <a href={`http://localhost:5000${sub.file_url}`} target="_blank" rel="noreferrer" style={{ color: '#0284c7', fontWeight: 'bold' }}>
-                            Download Uploaded File
+                            View File
                           </a>
                         </td>
                       </tr>
@@ -1166,14 +1238,14 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
       {activeTab === 'payroll' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Faculty Monthly Salary Disbursement History</h3>
+            <h3>Faculty Salary Statements</h3>
           </div>
           <div className="content-card-body">
             <table className="vtop-data-table">
               <thead>
                 <tr>
-                  <th>Salary Voucher</th>
-                  <th>Disbursement Date</th>
+                  <th>Voucher Ref</th>
+                  <th>Payment Date</th>
                   <th>Amount Disbursed</th>
                   <th>Status</th>
                 </tr>
@@ -1184,7 +1256,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
                     <td>SAL-REF-{s.salary_id}</td>
                     <td>{s.payment_date}</td>
                     <td><strong>₹{parseFloat(s.amount).toLocaleString()}</strong></td>
-                    <td><span className="badge-pill badge-resolved">SETTLED BY ACCOUNTS</span></td>
+                    <td><span className="badge-pill badge-resolved">Settled</span></td>
                   </tr>
                 ))}
               </tbody>
@@ -1196,24 +1268,24 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
       {activeTab === 'helpdesk' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Guardian Grievance Resolution Desk</h3>
+            <h3>Parent Support Grievances</h3>
           </div>
           <div className="content-card-body">
             <table className="vtop-data-table">
               <thead>
                 <tr>
-                  <th>Ticket ID</th>
+                  <th>Ticket</th>
                   <th>Guardian</th>
-                  <th>Contact</th>
-                  <th>Grievance Statement</th>
+                  <th>Phone</th>
+                  <th>Grievance</th>
                   <th>Status</th>
-                  <th>Resolve Actions</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {complaints.map(c => (
                   <tr key={c.complaint_id}>
-                    <td>TKT-{c.complaint_id}</td>
+                    <td>TKT-00{c.complaint_id}</td>
                     <td><strong>{c.guardian_name}</strong></td>
                     <td>{c.guardian_phone}</td>
                     <td>{c.description}</td>
@@ -1252,7 +1324,7 @@ function FacultyPortalView({ fid, activeTab, setError, setSuccess }) {
 }
 
 // -------------------------------------------------------------
-// GUARDIAN (PARENT) SUB-PORTAL VIEW
+// GUARDIAN (PARENT) VIEW
 // -------------------------------------------------------------
 function GuardianPortalView({ gid, activeTab, setError, setSuccess }) {
   const [payload, setPayload] = useState(null);
@@ -1264,7 +1336,7 @@ function GuardianPortalView({ gid, activeTab, setError, setSuccess }) {
       const data = await res.json();
       setPayload(data);
     } catch (e) {
-      setError("Failed to synchronize guardian records from Oracle backend.");
+      setError("Failed to fetch guardian records.");
     }
   };
 
@@ -1272,7 +1344,7 @@ function GuardianPortalView({ gid, activeTab, setError, setSuccess }) {
     fetchGuardianData();
   }, [gid]);
 
-  if (!payload) return <div>Synchronizing Relational Data...</div>;
+  if (!payload) return <div>Loading records...</div>;
 
   const { profile, wards, complaints, ward_details } = payload;
 
@@ -1286,7 +1358,7 @@ function GuardianPortalView({ gid, activeTab, setError, setSuccess }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      setSuccess("Official grievance ticket created and assigned to faculty board.");
+      setSuccess("Support ticket lodged successfully.");
       setTicketDesc('');
       fetchGuardianData();
     } catch (err) {
@@ -1298,18 +1370,18 @@ function GuardianPortalView({ gid, activeTab, setError, setSuccess }) {
     <div>
       <div className="metrics-row">
         <div className="metric-card">
-          <div className="metric-label">Guardian Primary Profile</div>
+          <div className="metric-label">Guardian</div>
           <div className="metric-value">{profile.name}</div>
-          <div className="metric-sub">Registered Contact: {profile.phone}</div>
+          <div className="metric-sub">{profile.phone}</div>
         </div>
-        <div className="metric-card gold-border">
+        <div className="metric-card">
           <div className="metric-label">Registered Wards</div>
-          <div className="metric-value">{wards.length} Students</div>
-          <div className="metric-sub">Associated Under Guardian Entity</div>
+          <div className="metric-value">{wards.length} Student(s)</div>
+          <div className="metric-sub">Linked to Profile</div>
         </div>
-        <div className="metric-card red-border">
-          <div className="metric-label">Active Support Tickets</div>
-          <div className="metric-value">{complaints.filter(c => c.status !== 'RESOLVED').length} Pending</div>
+        <div className="metric-card">
+          <div className="metric-label">Open Tickets</div>
+          <div className="metric-value">{complaints.filter(c => c.status !== 'RESOLVED').length} Active</div>
           <div className="metric-sub">{complaints.length} Total Raised</div>
         </div>
       </div>
@@ -1329,18 +1401,18 @@ function GuardianPortalView({ gid, activeTab, setError, setSuccess }) {
                 </div>
                 <div className="content-card-body">
                   <div style={{ display: 'flex', gap: '2rem', marginBottom: '1.5rem', fontWeight: 'bold' }}>
-                    <div>Attendance Rate: <span style={{ color: attRate >= 75 ? 'green' : 'red' }}>{attRate}%</span></div>
+                    <div>Attendance: <span style={{ color: attRate >= 75 ? '#16a34a' : '#dc2626' }}>{attRate}%</span></div>
                     <div>National ID: {w.national_id}</div>
                     <div>DOB: {w.dob}</div>
                   </div>
 
-                  <h4 style={{ marginBottom: '0.75rem', color: '#002147' }}>Academic Performance</h4>
+                  <h4 style={{ marginBottom: '0.75rem', color: '#0f172a' }}>Academic Marks</h4>
                   <table className="vtop-data-table" style={{ marginBottom: '2rem' }}>
                     <thead>
                       <tr>
                         <th>Subject</th>
                         <th>Assessment</th>
-                        <th>Awarded Mark</th>
+                        <th>Mark</th>
                         <th>Max Mark</th>
                       </tr>
                     </thead>
@@ -1356,12 +1428,12 @@ function GuardianPortalView({ gid, activeTab, setError, setSuccess }) {
                     </tbody>
                   </table>
 
-                  <h4 style={{ marginBottom: '0.75rem', color: '#002147' }}>Tuition Fee Ledger</h4>
+                  <h4 style={{ marginBottom: '0.75rem', color: '#0f172a' }}>Fee Payments</h4>
                   <table className="vtop-data-table">
                     <thead>
                       <tr>
-                        <th>Fee Ref</th>
-                        <th>Date Paid</th>
+                        <th>Receipt ID</th>
+                        <th>Payment Date</th>
                         <th>Amount</th>
                         <th>Status</th>
                       </tr>
@@ -1369,10 +1441,10 @@ function GuardianPortalView({ gid, activeTab, setError, setSuccess }) {
                     <tbody>
                       {wData.fees.map(f => (
                         <tr key={f.fee_id}>
-                          <td>FEE-REC-{f.fee_id}</td>
+                          <td>REC-00{f.fee_id}</td>
                           <td>{f.pay_date}</td>
                           <td><strong>₹{parseFloat(f.amount).toLocaleString()}</strong></td>
-                          <td><span className="badge-pill badge-resolved">CLEARED</span></td>
+                          <td><span className="badge-pill badge-resolved">Settled</span></td>
                         </tr>
                       ))}
                     </tbody>
@@ -1387,30 +1459,30 @@ function GuardianPortalView({ gid, activeTab, setError, setSuccess }) {
       {activeTab === 'grievance' && (
         <div className="content-card">
           <div className="content-card-header">
-            <h3>Lodge Official Grievance Ticket</h3>
+            <h3>Lodge Support Grievance</h3>
           </div>
           <div className="content-card-body">
             <form onSubmit={handleLodgeTicket} style={{ marginBottom: '2rem' }}>
               <div className="input-group">
-                <label>Grievance / Issue Narrative</label>
+                <label>Grievance Details</label>
                 <textarea
                   rows="4"
                   required
-                  placeholder="Detail your academic or administrative grievance here..."
+                  placeholder="Detail your inquiry or grievance here..."
                   value={ticketDesc}
                   onChange={e => setTicketDesc(e.target.value)}
                 />
               </div>
               <button type="submit" className="btn-action-primary">
-                LODGE OFFICIAL GRIEVANCE TICKET
+                Submit Support Ticket
               </button>
             </form>
 
-            <h4 style={{ marginBottom: '1rem', color: '#002147' }}>Submitted Grievance History</h4>
+            <h4 style={{ marginBottom: '1rem', color: '#0f172a' }}>Submitted Grievances</h4>
             <table className="vtop-data-table">
               <thead>
                 <tr>
-                  <th>Ticket Ref</th>
+                  <th>Ticket</th>
                   <th>Statement</th>
                   <th>Status</th>
                 </tr>
@@ -1418,7 +1490,7 @@ function GuardianPortalView({ gid, activeTab, setError, setSuccess }) {
               <tbody>
                 {complaints.map(c => (
                   <tr key={c.complaint_id}>
-                    <td>TKT-REF-{c.complaint_id}</td>
+                    <td>TKT-00{c.complaint_id}</td>
                     <td>{c.description}</td>
                     <td>
                       <span className={`badge-pill badge-${c.status.toLowerCase()}`}>
